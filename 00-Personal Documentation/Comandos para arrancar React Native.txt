@@ -1,0 +1,37 @@
+================= Comandos para arrancar React Native ==================
+
+1. Create project => npx react-native init AwesomeTSProject --template react-native-template-typescript
+
+2. Run project => npx react-native run-android
+
+3. command for know if the physical device is connected => adb devices 
+
+4. npx create-expo-app -t expo-template-blank-typescript => Instalador de Expo 
+
+Nota: Para modificar o agregar snippet. => View - commant palet - react snippet - configuration snippet - typescrip react - (Add Snippets).
+
+
+
+============ Algunas etiquetas importante y muy utilizadas. ============
+
+1. <SafeAreaView></SafeAreaView> => Es utilizada para evitar mostrar contenido por encima de la franja de la camara de algun dispositivos que tienen esa franja o camara en el mismo espacio de la pantalla. 
+
+2. const {width, height} = useWindowDimensions(); => Utilizando este hook
+podemos optener las dimenciones (Dimensions). Doc: const {width, height} = useWindowDimensions();
+
+3. numberOfLines={1} adjustsFontSizeToFit => esta combinación es para poder hacer mas pequeño mientas se aumentan los numeros en la pantalla.
+
+4. <TouchableOpacity> => Esta etiqueta o component es para hacer el efecto de touch en los botones.
+
+
+============ Navigations ============
+
+Existen 4 tipos de Navegaciones 
+
+1. Stack Navigation: 
+
+2. Drawer Navigation:
+
+3. BottomTab Navigation:
+
+4. MaterialTop Navigation:

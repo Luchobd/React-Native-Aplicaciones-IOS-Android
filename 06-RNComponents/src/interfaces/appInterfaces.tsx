@@ -3,3 +3,7 @@ export interface MenuItem {
   icon: string;
   component: string;
 }
+
+export interface ChildrenProps {
+  children: JSX.Element | JSX.Element[];
+}

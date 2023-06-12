@@ -1,10 +1,11 @@
 /* eslint-disable react/no-unstable-nested-components */
 /* eslint-disable react-native/no-inline-styles */
 import {SectionList, View, Text} from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/appTheme';
 import ItemSeparator from '../components/ItemSeparator';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 interface Casas {
   casa: string;
@@ -90,11 +91,14 @@ const casas: Casas[] = [
 ];
 
 export const SectionListScreen = () => {
+
+  const {theme} = useContext(ThemeContext);
+
   return (
     <View style={{...styles.globalMargin, flex: 1}}>
       <SectionList
         sections={casas} // Data de la sections
-        renderItem={({item}) => <Text> {item} </Text>} // Renderizar cada item
+        renderItem={({item}) => <Text style={{color: theme.colors.text}}> {item} </Text>} // Renderizar cada item
         keyExtractor={(item, index) => item + index} // Indice del item para que no se repitan
         ListHeaderComponent={() => <HeaderTitle title="Section List" />} // Renderizar encabezado de la lista. Titulo principal.
         ListFooterComponent={() => (
@@ -104,7 +108,7 @@ export const SectionListScreen = () => {
         )} // Renderizar pie de la lista. Como un Footer de titulo.
         stickySectionHeadersEnabled={true} // Para que se muestren los encabezados sticky. Forma que se muestra en la parte superior de la pantalla de forma estatica.
         renderSectionHeader={({section}) => (
-          <View style={{backgroundColor: 'white'}}>
+          <View style={{backgroundColor: theme.colors.background}}>
             <HeaderTitle title={section.casa} />
           </View>
         )} // Renderizar cada section header. En resumen es el encabezado de cada section, es decir el titulo.

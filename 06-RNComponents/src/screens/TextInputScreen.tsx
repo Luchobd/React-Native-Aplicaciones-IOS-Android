@@ -9,12 +9,13 @@ import {
   TouchableWithoutFeedback,
   Keyboard,
 } from 'react-native';
-import React from 'react';
+import React, {useContext} from 'react';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {styles} from '../theme/appTheme';
 import {ScrollView} from 'react-native-gesture-handler';
 import {useForm} from '../hooks/useForm';
 import {CustomSwitch} from '../components/CustomSwitch';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
 
 export const TextInputScreen = () => {
   const {form, onChange, isSubscribed} = useForm({
@@ -23,6 +24,8 @@ export const TextInputScreen = () => {
     phone: '',
     isSubscribed: false,
   });
+
+  const {theme} = useContext(ThemeContext);
 
   // const [form, setForm] = useState({
   //   name: '',
@@ -48,20 +51,30 @@ export const TextInputScreen = () => {
             <HeaderTitle title="TextInput" />
 
             <TextInput
-              style={stylesScreen.inputStyle}
+              style={{
+                ...stylesScreen.inputStyle,
+                borderColor: theme.colors.text,
+                color: theme.colors.text,
+              }}
               placeholder="Ingrese su nombre"
               autoCorrect={false} // Desactivar el autocorrector y las sugerencias.
               autoCapitalize="words" // Auto capitaliza las palabras.
               onChangeText={value => onChange(value, 'name')} // El value es el valor que ingresa el usuario. primer valor "value", segundo valor "name" que viene desde el objeto del useState.
+              placeholderTextColor={theme.dividerColor} // Permite cambiar el color del placeholder.
             />
             <TextInput
-              style={stylesScreen.inputStyle}
+              style={{
+                ...stylesScreen.inputStyle,
+                borderColor: theme.colors.text,
+                color: theme.colors.text,
+              }}
               placeholder="Ingrese su email"
               autoCorrect={false} // Desactivar el autocorrector y las sugerencias.
               autoCapitalize="none" // desabilita la capitalización.
               onChangeText={value => onChange(value, 'email')} // El value es el valor que ingresa el usuario. primer valor "value", segundo valor "email" que viene desde el objeto del useState.
               keyboardType="email-address" // Permite que el usuario ingrese un email. Ajustando el teclado a que tenga el @.
               keyboardAppearance="dark" // Permite que el teclado se vea oscuro. Solo IOS.
+              placeholderTextColor={theme.dividerColor} // Permite cambiar el color del placeholder.
             />
 
             <View style={stylesScreen.switchRow}>
@@ -76,11 +89,16 @@ export const TextInputScreen = () => {
             <HeaderTitle title={JSON.stringify(form, null, 3)} />
 
             <TextInput
-              style={stylesScreen.inputStyle}
+              style={{
+                ...stylesScreen.inputStyle,
+                borderColor: theme.colors.text,
+                color: theme.dividerColor,
+              }}
               placeholder="Ingrese su telefono"
               autoCorrect={false} // Desactivar el autocorrector y las sugerencias.
               onChangeText={value => onChange(value, 'phone')} // El value es el valor que ingresa el usuario. primer valor "value", segundo valor "telefono" que viene desde el objeto del useState.
               keyboardType="phone-pad" // Permite que el usuario ingrese un telefono. Ajustando el teclado a que tenga solo el teclado numerico.
+              placeholderTextColor={theme.colors.text} // Permite cambiar el color del placeholder.
             />
             <View style={{height: 100}} />
           </View>

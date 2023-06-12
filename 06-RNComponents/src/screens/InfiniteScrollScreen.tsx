@@ -1,13 +1,16 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react/no-unstable-nested-components */
 import {View, FlatList, ActivityIndicator} from 'react-native';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {HeaderTitle} from '../components/HeaderTitle';
 import {FedeInImage} from '../components/FedeInImage';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 // import { styles } from '../theme/appTheme';
 
 export const InfiniteScrollScreen = () => {
   const [numbers, setNumbers] = useState([0, 1, 2, 3, 4, 5]);
+
+  const {theme} = useContext(ThemeContext);
 
   const loadMore = () => {
     const newArray: number[] = [];
@@ -59,7 +62,7 @@ export const InfiniteScrollScreen = () => {
               backgroundColor: 'white',
               opacity: 1,
             }}>
-            <ActivityIndicator size={50} color="#5856D6" />
+            <ActivityIndicator size={50} color={theme.colors.primary} />
           </View>
         )} // Componente que se muestra al final de la lista. Generando un loading.
       />

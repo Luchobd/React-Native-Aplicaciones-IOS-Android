@@ -1,5 +1,5 @@
 /* eslint-disable react-native/no-inline-styles */
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {
   ActivityIndicator,
   Animated,
@@ -8,6 +8,7 @@ import {
   View,
 } from 'react-native';
 import {useAnimation} from '../hooks/useAnimation';
+import { ThemeContext } from '../context/themeContext/ThemeContext';
 
 interface Props {
   uri: string;
@@ -17,6 +18,8 @@ interface Props {
 export const FedeInImage = ({uri, style}: Props) => {
   const {opacity, fadeIn} = useAnimation();
   const [isLoading, setIsLoading] = useState(true);
+
+  const {theme} = useContext(ThemeContext);
 
   const finishLoading = () => {
     setIsLoading(false);
@@ -29,7 +32,7 @@ export const FedeInImage = ({uri, style}: Props) => {
           <ActivityIndicator
             style={{position: 'absolute'}}
             size={30}
-            color="grey"
+            color={theme.colors.primary}
           />
         ) // aqui se pone el indicador de carga.
       }

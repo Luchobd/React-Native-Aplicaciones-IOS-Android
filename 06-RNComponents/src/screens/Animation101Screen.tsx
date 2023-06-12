@@ -1,16 +1,21 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {View, StyleSheet, Animated, Button} from 'react-native';
 import {useAnimation} from '../hooks/useAnimation';
+import {ThemeContext} from '../context/themeContext/ThemeContext';
+import {useContext} from 'react';
 
 export const Animation101Screen = () => {
   const {fadeIn, fedeOut, position, opacity, startMovingPosition} =
     useAnimation();
+
+  const {theme} = useContext(ThemeContext);
 
   return (
     <View style={styles.container}>
       <Animated.View
         style={{
           ...styles.purpleBox,
+          backgroundColor: theme.colors.primary,
           marginBottom: 20,
           opacity: opacity,
           transform: [{translateX: position}],
@@ -23,7 +28,7 @@ export const Animation101Screen = () => {
           fadeIn();
           startMovingPosition(100);
         }}
-        color="#5856d6"
+        color={theme.colors.primary}
       />
       <Button
         title="FadeOut"
@@ -31,7 +36,7 @@ export const Animation101Screen = () => {
           fedeOut();
           startMovingPosition(-100);
         }}
-        color="#ff8ff0"
+        color={theme.colors.primary}
       />
     </View>
   );

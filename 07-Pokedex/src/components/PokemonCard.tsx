@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     top: 20,
     left: 10,
+    textTransform: 'capitalize',
   },
   pokeballContainer: {
     width: 100,

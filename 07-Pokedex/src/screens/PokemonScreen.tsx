@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 import {StackScreenProps} from '@react-navigation/stack';
 import {useSafeAreaInsets} from 'react-native-safe-area-context';
-import {RootStackParams} from '../navigator/navigator';
+import {RootStackParams} from '../navigator/TabList';
 import Icon from 'react-native-vector-icons/Ionicons';
 import {FadeInImage} from '../components/FedeInImage';
 import {usePokemon} from '../hooks/usePokemon';
@@ -24,7 +24,7 @@ export const PokemonScreen = ({navigation, route}: Props) => {
   const {id, name, picture} = simplePokemon;
 
   const {isLoading, pokemon} = usePokemon(id);
-  console.log(pokemon);
+  // console.log(pokemon);
 
   return (
     <View style={{flex: 1}}>
